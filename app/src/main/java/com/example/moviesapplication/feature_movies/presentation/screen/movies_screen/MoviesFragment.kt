@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviesapplication.databinding.FragmentMoviesBinding
 import com.example.moviesapplication.feature_movies.domain.model.Movie
+import com.example.moviesapplication.feature_movies.presentation.screen.movies_screen.components.list.MovieItemListener
 import com.example.moviesapplication.feature_movies.presentation.screen.movies_screen.components.list.MoviesAdapter
 import com.example.moviesapplication.feature_movies.presentation.viewmodel.movies_viewmodel.MoviesViewModel
 import kotlinx.coroutines.Dispatchers
@@ -43,7 +44,12 @@ class MoviesFragment : Fragment() {
             return oldItem == newItem
         }
 
-    } )
+    }, object : MovieItemListener {
+        override fun onMovieItemClick(movie: Movie) {
+            moviesViewModel.selectedMovie.postValue(movie)
+            navController.navigate(MoviesFragmentDirections.actionMoviesFragmentToDetailFragment())
+        }
+    })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -9,7 +9,8 @@ import com.example.moviesapplication.feature_movies.domain.model.Movie
 import com.squareup.picasso.Picasso
 
 class MovieViewHolder(
-    itemView: View
+    itemView: View,
+    private val movieItemListener: MovieItemListener
 ) : RecyclerView.ViewHolder(itemView) {
 
     private val binding = ItemMovieBinding.bind(itemView)
@@ -27,5 +28,6 @@ class MovieViewHolder(
         } else {
             binding.tvTitle.text = "Movie not found"
         }
+        binding.root.setOnClickListener { movie?.let { movieItemListener.onMovieItemClick(it) } }
     }
 }

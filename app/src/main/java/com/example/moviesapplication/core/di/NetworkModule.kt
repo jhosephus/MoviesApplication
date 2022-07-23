@@ -1,5 +1,6 @@
 package com.example.moviesapplication.core.di
 
+import com.example.moviesapplication.core.common.UrlProvider
 import com.example.moviesapplication.feature_movies.data.api.MoviesApi
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -25,7 +26,7 @@ object NetworkModule {
     fun providesRetrofit() : Retrofit {
         val gson = GsonBuilder().setDateFormat("yyyy-MM-dd").create()
         return Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3/")
+            .baseUrl(UrlProvider.moviesUrl)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }

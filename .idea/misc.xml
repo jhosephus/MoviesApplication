@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Users/User/AndroidStudioProjects/MoviesApplication/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MoviesApplication/app/src/main/res/layout/fragment_login.xml" value="0.16" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MoviesApplication/app/src/main/res/layout/fragment_movies.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/MoviesApplication/app/src/main/res/layout/item_movie.xml" value="0.10416666666666667" />
       </map>
     </option>
   </component>

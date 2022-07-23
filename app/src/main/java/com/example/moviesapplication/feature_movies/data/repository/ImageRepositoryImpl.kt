@@ -14,8 +14,7 @@ class ImageRepositoryImpl constructor(
         if (response.isSuccessful) {
             Log.d("IMAGE", "GET Success")
             val bytes = response.body()?.byteStream()
-            val decodedBitmap = BitmapFactory.decodeStream(bytes)
-            return decodedBitmap
+            return BitmapFactory.decodeStream(bytes)
         }
         Log.d("IMAGE", "GET Failure")
         Log.d("IMAGE", "Code: ${response.code()}")

@@ -1,16 +1,12 @@
 package com.example.moviesapplication.feature_movies.data.room
 
-import android.R.attr
 import android.graphics.Bitmap
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import com.example.moviesapplication.feature_movies.data.util.JsonParser
 import java.util.*
-import android.R.attr.bitmap
 import android.graphics.BitmapFactory
-import android.util.Log
 import java.io.ByteArrayOutputStream
-import java.nio.ByteBuffer
 
 
 @ProvidedTypeConverter

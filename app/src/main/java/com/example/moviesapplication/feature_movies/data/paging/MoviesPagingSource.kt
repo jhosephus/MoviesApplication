@@ -3,7 +3,6 @@ package com.example.moviesapplication.feature_movies.data.paging
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.moviesapplication.feature_movies.data.api.MoviesApi
 import com.example.moviesapplication.feature_movies.domain.model.Movie
 import com.example.moviesapplication.feature_movies.domain.repository.MoviesRepository
 import javax.inject.Inject

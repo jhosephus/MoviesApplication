@@ -4,7 +4,6 @@ import android.util.Log
 import com.example.moviesapplication.feature_movies.data.api.MoviesApi
 import com.example.moviesapplication.feature_movies.domain.model.Movie
 import com.example.moviesapplication.feature_movies.domain.repository.MoviesRepository
-import javax.inject.Inject
 
 class MoviesRepositoryImpl constructor(
     private val moviesApi: MoviesApi

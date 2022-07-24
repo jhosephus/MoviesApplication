@@ -6,7 +6,6 @@ import com.example.moviesapplication.feature_movies.domain.model.DateInfo
 import com.example.moviesapplication.feature_movies.domain.model.Movie
 import com.example.moviesapplication.feature_movies.domain.model.MoviesPageResponse
 import com.example.moviesapplication.feature_movies.domain.repository.MoviesPageRepository
-import com.example.moviesapplication.feature_movies.domain.repository.MoviesRepository
 import java.util.*
 
 class MoviesPageRepositoryImpl constructor(

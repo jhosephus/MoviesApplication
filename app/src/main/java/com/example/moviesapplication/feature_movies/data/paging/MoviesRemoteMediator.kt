@@ -31,10 +31,6 @@ class MoviesRemoteMediator @Inject constructor(
         state: PagingState<Int, MovieEntity>
     ): MediatorResult {
         return try {
-            // The network load method takes an optional after=<user.id>
-            // parameter. For every page after the first, pass the last user
-            // ID to let it continue from where it left off. For REFRESH,
-            // pass null to load the first page.
 
             var nextKey: Int? = 1
             when (loadType) {
@@ -45,25 +41,10 @@ class MoviesRemoteMediator @Inject constructor(
                 }
                 LoadType.APPEND -> {
                     Log.d("Mediator", "Append")
-                    /*if (state.anchorPosition != null) {
-                        state.anchorPosition?.let { anchorPosition ->
-                            val anchorPage = state.closestPageToPosition(anchorPosition)
-                            Log.d("Mediator", "Anchor: ${anchorPage?.nextKey}")
-                            nextKey = anchorPage?.nextKey?.plus(1) ?: 1
-                        }
-                    } else {
-                        Log.d("Mediator", "Key preCalc: $nextKey and pages ${state.pages.size}")
-                        nextKey = currentPage + 1
-                    }*/
                     nextKey = currentPage + 1
                     if ((nextKey ?: 1) > 13) return MediatorResult.Success(endOfPaginationReached = true)
                 }
             }
-
-            // Suspending network load via Retrofit. This doesn't need to be
-            // wrapped in a withContext(Dispatcher.IO) { ... } block since
-            // Retrofit's Coroutine CallAdapter dispatches on a worker
-            // thread.
 
             Log.d("Mediator", "Key: $nextKey")
             val response = pageRepository.getMoviePage(nextKey ?: 1)
@@ -73,9 +54,6 @@ class MoviesRemoteMediator @Inject constructor(
                 moviesDao.clearAll()
             }
 
-            // Insert new users into database, which invalidates the
-            // current PagingData, allowing Paging to present the updates
-            // in the DB.
             if (response.results.isNotEmpty()) {
                 moviesDao.insertMovies(response.results.map { it.toMovieEntity(imageRepository) })
                 return MediatorResult.Success(endOfPaginationReached = false)

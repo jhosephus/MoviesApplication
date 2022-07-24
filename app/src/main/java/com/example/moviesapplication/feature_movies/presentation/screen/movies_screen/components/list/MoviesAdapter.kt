@@ -7,7 +7,6 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.example.moviesapplication.R
 import com.example.moviesapplication.feature_movies.data.room.entity.MovieEntity
-import com.example.moviesapplication.feature_movies.domain.model.Movie
 
 class MoviesAdapter(
     diffCallback: DiffUtil.ItemCallback<MovieEntity>,

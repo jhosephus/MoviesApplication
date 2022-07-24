@@ -11,7 +11,6 @@ import com.example.moviesapplication.feature_movies.data.paging.MoviesPagingSour
 import com.example.moviesapplication.feature_movies.data.paging.MoviesRemoteMediator
 import com.example.moviesapplication.feature_movies.data.room.MoviesDatabase
 import com.example.moviesapplication.feature_movies.data.room.entity.MovieEntity
-import com.example.moviesapplication.feature_movies.domain.model.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

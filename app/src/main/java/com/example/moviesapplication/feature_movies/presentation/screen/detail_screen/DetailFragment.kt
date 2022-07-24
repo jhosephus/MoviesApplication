@@ -15,7 +15,6 @@ import com.example.moviesapplication.R
 import com.example.moviesapplication.core.common.UrlProvider
 import com.example.moviesapplication.databinding.FragmentDetailBinding
 import com.example.moviesapplication.feature_movies.data.room.entity.MovieEntity
-import com.example.moviesapplication.feature_movies.domain.model.Movie
 import com.example.moviesapplication.feature_movies.presentation.viewmodel.movies_viewmodel.MoviesViewModel
 import com.squareup.picasso.Picasso
 
@@ -65,7 +64,7 @@ class DetailFragment : Fragment() {
             .centerInside()
             .error(R.drawable.ic_poster_not_found)
             .into(binding.ivVerticalPoster)
-        binding.tvTitle.text = movie.original_title
+        binding.tvTitle.text = movie.title
         binding.tvRating.text = movie.vote_average.toString()
         binding.tvReleaseDate.text = DateFormat.format("yyyy-MM-dd", movie.release_date).toString()
         binding.tvSummary.text = movie.overview

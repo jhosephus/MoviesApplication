@@ -5,6 +5,9 @@
     <string name="user_hint">User</string>
     <string name="password_hint">Password</string>
     <string name="signin_label">Sign in</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Detail Screen -->
+    <string name="movie_title">Title:</string>
+    <string name="movie_release">Release:</string>
+    <string name="movie_rating">Rating:</string>
+    <string name="movie_overview">Overview:</string>
 </resources>

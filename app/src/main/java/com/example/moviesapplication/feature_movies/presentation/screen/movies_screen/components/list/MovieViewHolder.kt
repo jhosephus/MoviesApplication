@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesapplication.R
 import com.example.moviesapplication.core.common.UrlProvider
 import com.example.moviesapplication.databinding.ItemMovieBinding
+import com.example.moviesapplication.feature_movies.data.room.entity.MovieEntity
 import com.example.moviesapplication.feature_movies.domain.model.Movie
 import com.squareup.picasso.Picasso
 
@@ -15,7 +16,23 @@ class MovieViewHolder(
 
     private val binding = ItemMovieBinding.bind(itemView)
 
-    fun render(movie: Movie?) {
+    /*fun render(movie: Movie?) {
+        if (movie != null) {
+            Picasso
+                .get()
+                .load("${UrlProvider.imagesUrl}${movie.backdrop_path}")
+                .placeholder(R.drawable.ic_loading_poster)
+                .fit()
+                .error(R.drawable.ic_poster_not_found)
+                .into(binding.ivBackdropPoster)
+            binding.tvTitle.text = movie.original_title
+        } else {
+            binding.tvTitle.text = "Movie not found"
+        }
+        binding.root.setOnClickListener { movie?.let { movieItemListener.onMovieItemClick(it) } }
+    }*/
+
+    fun render(movie: MovieEntity?) {
         if (movie != null) {
             Picasso
                 .get()
@@ -30,4 +47,5 @@ class MovieViewHolder(
         }
         binding.root.setOnClickListener { movie?.let { movieItemListener.onMovieItemClick(it) } }
     }
+
 }

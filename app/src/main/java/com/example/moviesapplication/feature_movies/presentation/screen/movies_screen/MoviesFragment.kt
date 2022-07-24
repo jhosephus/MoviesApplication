@@ -11,10 +11,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviesapplication.databinding.FragmentMoviesBinding
+import com.example.moviesapplication.feature_movies.data.room.entity.MovieEntity
 import com.example.moviesapplication.feature_movies.domain.model.Movie
 import com.example.moviesapplication.feature_movies.presentation.screen.movies_screen.components.list.MovieItemListener
 import com.example.moviesapplication.feature_movies.presentation.screen.movies_screen.components.list.MoviesAdapter
@@ -23,7 +25,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-
+@ExperimentalPagingApi
 class MoviesFragment : Fragment() {
 
     // Binding
@@ -37,17 +39,17 @@ class MoviesFragment : Fragment() {
     private lateinit var navController: NavController
 
     // RecyclerView Adapter
-    private val moviesAdapter = MoviesAdapter(object : DiffUtil.ItemCallback<Movie>() {
-        override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+    private val moviesAdapter = MoviesAdapter(object : DiffUtil.ItemCallback<MovieEntity>() {
+        override fun areItemsTheSame(oldItem: MovieEntity, newItem: MovieEntity): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+        override fun areContentsTheSame(oldItem: MovieEntity, newItem: MovieEntity): Boolean {
             return oldItem == newItem
         }
 
     }, object : MovieItemListener {
-        override fun onMovieItemClick(movie: Movie) {
+        override fun onMovieItemClick(movie: MovieEntity) {
             moviesViewModel.selectedMovie.postValue(movie)
             navController.navigate(MoviesFragmentDirections.actionMoviesFragmentToDetailFragment())
         }
@@ -73,8 +75,8 @@ class MoviesFragment : Fragment() {
         binding.rvMovies.layoutManager = LinearLayoutManager(activity)
         binding.rvMovies.adapter = moviesAdapter
 
-        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-            moviesViewModel.moviesFlow.collectLatest { pagingData ->
+        viewLifecycleOwner.lifecycleScope.launch {
+            moviesViewModel.pager.collectLatest { pagingData ->
                 moviesAdapter.submitData(pagingData = pagingData)
             }
         }

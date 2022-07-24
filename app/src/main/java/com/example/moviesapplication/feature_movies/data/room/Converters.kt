@@ -8,6 +8,8 @@ import com.example.moviesapplication.feature_movies.data.util.JsonParser
 import java.util.*
 import android.R.attr.bitmap
 import android.graphics.BitmapFactory
+import android.util.Log
+import java.io.ByteArrayOutputStream
 import java.nio.ByteBuffer
 
 
@@ -45,19 +47,21 @@ class Converters(
     }
 
     @TypeConverter
-    fun fromBitmapArray(bitmap: Bitmap): ByteArray {
-        val width = bitmap.width
-        val height = bitmap.height
-
-        val size: Int = bitmap.rowBytes * height
-        val byteBuffer: ByteBuffer = ByteBuffer.allocate(size)
-        bitmap.copyPixelsToBuffer(byteBuffer)
-        return byteBuffer.array()
+    fun fromBitmapArray(bitmap: Bitmap?): ByteArray? {
+        if (bitmap != null) {
+            val stream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream)
+            return stream.toByteArray()
+        }
+        return null
     }
 
     @TypeConverter
-    fun fromArrayBitmap(biteArray: ByteArray): Bitmap {
-        return BitmapFactory.decodeByteArray(biteArray, 0, biteArray.size)
+    fun fromArrayBitmap(biteArray: ByteArray?): Bitmap? {
+        if (biteArray != null) {
+            return BitmapFactory.decodeByteArray(biteArray, 0, biteArray.size)
+        }
+        return null
     }
 
 }

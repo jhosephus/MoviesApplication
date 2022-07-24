@@ -3,8 +3,10 @@ package com.example.moviesapplication.core.di
 import com.example.moviesapplication.feature_movies.data.api.ImageApi
 import com.example.moviesapplication.feature_movies.data.api.MoviesApi
 import com.example.moviesapplication.feature_movies.data.repository.ImageRepositoryImpl
+import com.example.moviesapplication.feature_movies.data.repository.MoviesPageRepositoryImpl
 import com.example.moviesapplication.feature_movies.data.repository.MoviesRepositoryImpl
 import com.example.moviesapplication.feature_movies.domain.repository.ImageRepository
+import com.example.moviesapplication.feature_movies.domain.repository.MoviesPageRepository
 import com.example.moviesapplication.feature_movies.domain.repository.MoviesRepository
 import dagger.Module
 import dagger.Provides
@@ -26,6 +28,12 @@ object RepositoryModule {
     @Singleton
     fun providesImageRepository(imageApi: ImageApi) : ImageRepository {
         return ImageRepositoryImpl(imageApi)
+    }
+
+    @Provides
+    @Singleton
+    fun providesMoviesPageRepository(moviesApi: MoviesApi) : MoviesPageRepository {
+        return MoviesPageRepositoryImpl(moviesApi)
     }
 
 }

@@ -10,13 +10,16 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.paging.ExperimentalPagingApi
 import com.example.moviesapplication.R
 import com.example.moviesapplication.core.common.UrlProvider
 import com.example.moviesapplication.databinding.FragmentDetailBinding
+import com.example.moviesapplication.feature_movies.data.room.entity.MovieEntity
 import com.example.moviesapplication.feature_movies.domain.model.Movie
 import com.example.moviesapplication.feature_movies.presentation.viewmodel.movies_viewmodel.MoviesViewModel
 import com.squareup.picasso.Picasso
 
+@ExperimentalPagingApi
 class DetailFragment : Fragment() {
 
     // Binding
@@ -53,7 +56,7 @@ class DetailFragment : Fragment() {
 
     }
 
-    private fun setMovieDetails(movie: Movie) {
+    private fun setMovieDetails(movie: MovieEntity) {
         Picasso
             .get()
             .load("${UrlProvider.imagesUrl}${movie.poster_path}")

@@ -14,6 +14,13 @@ import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
+/**
+ * RemoteMediator: It facilitates the coordination in the
+ * pagination process, it uses the Room database as the
+ * Retrofit API to coordinate data network operations.
+ */
+
+
 @ExperimentalPagingApi
 class MoviesRemoteMediator @Inject constructor(
     private val db: MoviesDatabase,

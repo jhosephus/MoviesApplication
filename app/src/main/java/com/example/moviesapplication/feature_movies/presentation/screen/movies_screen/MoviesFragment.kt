@@ -21,6 +21,14 @@ import com.example.moviesapplication.feature_movies.presentation.viewmodel.movie
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+/**
+ * LoginScreen: It contains one control:
+ * ... Movies recyclerView
+ *
+ * Logic: It consults business logic for the list of movies.
+ * It launches a coroutine to receive the incoming data and display in list.
+ */
+
 @ExperimentalPagingApi
 class MoviesFragment : Fragment() {
 

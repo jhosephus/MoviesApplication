@@ -18,6 +18,16 @@ import com.example.moviesapplication.feature_movies.data.room.entity.MovieEntity
 import com.example.moviesapplication.feature_movies.presentation.viewmodel.movies_viewmodel.MoviesViewModel
 import com.squareup.picasso.Picasso
 
+/**
+ * LoginScreen: It contains many views:
+ * ... Poster imageView
+ * ... Details textViews (title, release date, rating, overview)
+ *
+ * Logic: It consults which was the selected movie in MovieScreen.
+ * The selection's info is showed in the views.
+ */
+
+
 @ExperimentalPagingApi
 class DetailFragment : Fragment() {
 

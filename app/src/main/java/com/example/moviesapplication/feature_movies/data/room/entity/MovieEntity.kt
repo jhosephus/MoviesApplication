@@ -4,6 +4,12 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
+/**
+ * MovieEntity: It describes the table in the database.
+ *
+ * Purpose: Data persistence (locally)
+ */
+
 @Entity
 data class MovieEntity(
     val adult: Boolean,

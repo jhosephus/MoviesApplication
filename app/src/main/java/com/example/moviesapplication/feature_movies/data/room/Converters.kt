@@ -8,6 +8,11 @@ import java.util.*
 import android.graphics.BitmapFactory
 import java.io.ByteArrayOutputStream
 
+/**
+ * Converters: It contains all required conversion
+ * needed to insert data like arrays into Room database.
+ */
+
 
 @ProvidedTypeConverter
 class Converters(

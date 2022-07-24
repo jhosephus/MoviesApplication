@@ -14,6 +14,15 @@ import com.example.moviesapplication.databinding.FragmentLoginBinding
 import com.example.moviesapplication.feature_movies.presentation.viewmodel.login_viewmodel.LoginEvent
 import com.example.moviesapplication.feature_movies.presentation.viewmodel.login_viewmodel.LoginViewModel
 
+/**
+ * LoginScreen: It contains three controls:
+ * ... User inputText
+ * ... Password inputText
+ * ... SignIn button
+ *
+ * Logic: It consults business logic about the input. If
+ * credentials are valid, then it redirects to the main screen.
+ */
 
 class LoginFragment : Fragment() {
 
